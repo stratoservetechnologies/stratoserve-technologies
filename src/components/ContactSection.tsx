@@ -32,10 +32,10 @@ const ContactSection = () => {
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">Email Us</h3>
                     <a
-                      href="mailto:stratoservetechnologies@gmail.com"
+                      href="mailto:statoservetechnologies@gmail.com"
                       className="text-gray-600 hover:text-brand-900 transition-colors"
                     >
-                      stratoservetechnologies@gmail.com
+                      statoservetechnologies@gmail.com
                     </a>
                   </div>
                 </div>

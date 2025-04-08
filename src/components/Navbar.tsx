@@ -13,14 +13,14 @@ const Navbar = () => {
   };
 
   const navItems = [
-    { name: "Home", path: "/" },
-    { name: "Services", path: "/services" },
-    { name: "Projects", path: "/projects" },
-    { name: "Team", path: "/team" },
-    { name: "About", path: "/about" },
-    { name: "Blog", path: "/blog" },
-    { name: "FAQ", path: "/faq" },
-    { name: "Contact", path: "/contact" },
+    { name: "Home", id: "home" },
+    { name: "Services", id: "services" },
+    { name: "Projects", id: "projects" },
+    { name: "Team", id: "team" },
+    { name: "About", id: "about" },
+    { name: "Testimonials", id: "testimonials" },
+    { name: "FAQ", id: "faq" },
+    { name: "Contact", id: "contact" },
   ];
 
   return (
@@ -35,13 +35,13 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1">
             {navItems.map((item, index) => (
-              <Link
-                key={index}
-                to={item.path}
-                className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-brand-900 hover:bg-gray-100 transition-colors"
-              >
-                {item.name}
-              </Link>
+              <a
+              key={index}
+              href={`#${item.id}`}
+              className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-brand-900 hover:bg-gray-100 transition-colors"
+            >
+              {item.name}
+            </a>
             ))}
             <Button className="ml-4 bg-brand-900 hover:bg-brand-800 text-white">Get a Quote</Button>
           </div>
