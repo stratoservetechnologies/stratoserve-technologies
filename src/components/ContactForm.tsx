@@ -3,6 +3,7 @@ import { useState } from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import emailjs from "@emailjs/browser";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -52,21 +53,33 @@ const ContactForm = () => {
 
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
-    
-    // Simulate API call
+
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      console.log("Form data:", data);
-      
+      const result = await emailjs.send(
+        "service_q06x9te",
+        "template_u58xm5e",
+        {
+          name: data.name,
+          email: data.email,
+          phone: data.phone || "N/A",
+          company: data.company || "N/A",
+          service: data.service,
+          message: data.message,
+        },
+        "mIUMFonpQ4kWWZf5k"
+      );
+
+      console.log("Email sent successfully:", result.text);
       toast.success("Your message has been sent! We'll get back to you soon.");
       form.reset();
     } catch (error) {
+      console.error("Error sending email:", error);
       toast.error("There was an error sending your message. Please try again.");
-      console.error("Error submitting form:", error);
     } finally {
       setIsSubmitting(false);
     }
   };
+
 
   return (
     <Form {...form}>

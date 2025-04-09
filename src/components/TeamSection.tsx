@@ -6,36 +6,36 @@ import { Link } from "react-router-dom";
 const TeamSection = () => {
   const teamMembers = [
     {
-      image: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&q=80&w=800",
-      name: "Rajesh Kumar",
+      image: "/public/shlokthakkar.jpg",
+      name: "Shlok Thakkar",
       title: "CEO & Founder",
       specializations: ["Strategy", "Leadership", "Innovation"],
       description: "With over 15 years of experience in tech, Rajesh leads our company with vision and expertise.",
     },
     {
       image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800",
-      name: "Priya Sharma",
+      name: "Pratap Kansara",
       title: "Lead Software Architect",
       specializations: ["Java", "AWS", "Microservices"],
       description: "Priya designs scalable, robust architectures for our most complex enterprise solutions.",
     },
     {
       image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800",
-      name: "Amit Patel",
-      title: "Frontend Developer",
+      name: "Anuj Shah",
+      title: "Lead Software Developer & Co Founder",
       specializations: ["React", "TypeScript", "UI/UX"],
       description: "Amit creates beautiful, intuitive user interfaces with a focus on exceptional user experience.",
     },
     {
       image: "https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&q=80&w=800",
-      name: "Neha Verma",
+      name: "Aman Verma",
       title: "Mobile App Developer",
       specializations: ["React Native", "Flutter", "iOS/Android"],
       description: "Neha specializes in building cross-platform mobile applications that deliver native-like experiences.",
     },
     {
       image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=800",
-      name: "Vikram Singh",
+      name: "Dev Bharadwaj",
       title: "AI Specialist",
       specializations: ["Machine Learning", "Python", "TensorFlow"],
       description: "Vikram implements cutting-edge AI solutions to solve complex business problems.",
