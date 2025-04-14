@@ -1,0 +1,163 @@
+import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import * as z from 'zod';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+
+const contactFormSchema = z.object({
+  fullName: z.string().min(2, {
+    message: 'Full Name must be at least 2 characters.',
+  }),
+  email: z.string().email({
+    message: 'Please enter a valid email address.',
+  }),
+  phoneNumber: z.string().optional(),
+  service: z.string().min(1, {
+    message: 'Please select a service.',
+  }),
+  message: z.string().min(10, {
+    message: 'Message must be at least 10 characters.',
+  }),
+});
+
+type ContactFormValues = z.infer<typeof contactFormSchema>;
+
+const Contact = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const form = useForm<ContactFormValues>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      fullName: '',
+      email: '',
+      phoneNumber: '',
+      service: '',
+      message: '',
+    },
+  });
+
+  const onSubmit = async (values: ContactFormValues) => {
+    setIsSubmitting(true);
+    console.log(values);
+    try {
+      // Here you would typically send the form data to your backend
+      // using a fetch or axios call.
+      // Example: await fetch('/api/contact', { method: 'POST', body: JSON.stringify(values) });
+      // For now, we just log the values to the console and simulate a delay.
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      form.reset();
+    } catch (error) {
+      console.error('Error sending form data:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <div>
+      <Navbar />
+      <div className="container mx-auto py-24 px-4 md:px-6">
+        <div className="max-w-2xl mx-auto">
+          <h1 className="text-4xl font-bold text-brand-900 mb-8">Contact Us</h1>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <FormField
+                control={form.control}
+                name="fullName"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Full Name</FormLabel>
+                    <FormControl>
+                      <Input placeholder="John Doe" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email</FormLabel>
+                    <FormControl>
+                      <Input placeholder="johndoe@example.com" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="phoneNumber"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Phone Number (Optional)</FormLabel>
+                    <FormControl>
+                      <Input placeholder="+1-123-456-7890" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="service"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Services Interested In</FormLabel>
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select a service" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="web-development">Web Development</SelectItem>
+                        <SelectItem value="app-development">App Development</SelectItem>
+                        <SelectItem value="ui-ux-design">UI/UX Design</SelectItem>
+                        <SelectItem value="crm">CRM</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="message"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Message</FormLabel>
+                    <FormControl>
+                      <Textarea placeholder="Enter your message here." {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button type="submit" disabled={isSubmitting} className="bg-brand-900 hover:bg-brand-800 text-white">
+                {isSubmitting ? 'Submitting...' : 'Send Message'}
+              </Button>
+            </form>
+          </Form>
+        </div>
+      </div>
+      <Footer />
+    </div>
+  );
+};
+
+export default Contact;

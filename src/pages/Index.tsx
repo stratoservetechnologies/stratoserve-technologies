@@ -1,38 +1,41 @@
+import React from 'react';
+import Hero from '@/components/Hero'
+import ServicesSection from '@/components/ServicesSection';
+import ProjectsSection from '@/components/ProjectsSection';
+import CTASection from '@/components/CTASection';
+import StatsSection from '@/components/StatsSection';
+import TestimonialsSection from '@/components/TestimonialsSection';
+import TeamSection from '@/components/TeamSection';
+import ContactSection from '@/components/ContactSection';
+import FAQSection from '@/components/FAQSection';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import { Link } from 'react-router-dom';
 
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import ServicesSection from "@/components/ServicesSection";
-import ProjectsSection from "@/components/ProjectsSection";
-import TeamSection from "@/components/TeamSection";
-import AboutSection from "@/components/AboutSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import ContactSection from "@/components/ContactSection";
-import FAQSection from "@/components/FAQSection";
-import StatsSection from "@/components/StatsSection";
-import CTASection from "@/components/CTASection";
-import Footer from "@/components/Footer";
-import { useEffect } from "react";
+const Index: React.FC = () => {
 
-const Index = () => {
-  useEffect(() => {
-    // Scroll to top when component mounts
-    window.scrollTo(0, 0);
-  }, []);
-
+  const services = [
+    {id: 'web-development', name: 'Web Development'},
+    {id: 'app-development', name: 'App Development'},
+    {id: 'ui-ux-design', name: 'UI/UX Design'},
+    {id: 'devops-automation', name: 'DevOps & Automation'}
+  ]
   return (
-    <div className="min-h-screen flex flex-col">
+    <div>
       <Navbar />
-      <main className="flex-1">
+      <main>
         <Hero />
-        <ServicesSection />
+        <ServicesSection services={services} />
+          {services.map((service, index) => (
+          <Link key={index} to={`/services#${service.id}`}></Link>
+        ))}
         <ProjectsSection />
-        <AboutSection />
-        <StatsSection />
-        <TeamSection />
-        <TestimonialsSection />
-        <FAQSection />
-        <ContactSection />
         <CTASection />
+        <StatsSection />
+        <TestimonialsSection />
+        <TeamSection />
+        <ContactSection />
+        <FAQSection />
       </main>
       <Footer />
     </div>
