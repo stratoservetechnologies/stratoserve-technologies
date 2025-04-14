@@ -41,7 +41,7 @@ const FAQSection = () => {
   ];
 
   return (
-    <section className="section-padding bg-white" id="faq">
+    <section className="py-16 bg-gray-100" id="faq">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
@@ -51,15 +51,19 @@ const FAQSection = () => {
         </div>
 
         <div className="max-w-3xl mx-auto">
-          <Accordion type="single" collapsible className="space-y-4">
+          <Accordion type="single" collapsible className="space-y-4 ">
             {faqs.map((faq, index) => (
-              <AccordionItem key={index} value={`item-${index}`} className="border border-gray-200 rounded-lg px-6">
-                <AccordionTrigger className="text-left font-medium text-gray-900 py-5">
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-gray-600 pb-5">
-                  {faq.answer}
-                </AccordionContent>
+              <AccordionItem key={index} value={`item-${index}`} className="border border-gray-200 rounded-lg shadow-md overflow-hidden transition-shadow hover:shadow-lg">
+                <AccordionTrigger className="text-left font-medium text-gray-900 py-4 px-6 hover:bg-gray-50 transition-colors duration-200">
+                    <span className="font-semibold text-gray-800">
+                       {faq.question}
+                    </span>
+                 </AccordionTrigger>
+                 <AccordionContent className="text-gray-600 px-6 pb-4 space-y-2">
+                    <p className="text-sm text-gray-700">
+                       {faq.answer}
+                     </p>
+                 </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>

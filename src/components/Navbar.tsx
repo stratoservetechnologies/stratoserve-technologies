@@ -38,7 +38,7 @@ const Navbar = () => {
               <Link
               key={index}
               to={item.path}
-              className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-brand-900 hover:bg-gray-100 transition-colors"
+              className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 transition-colors hover:text-brand-800 hover:underline underline-offset-4"
             >
               {item.name}
             </Link>

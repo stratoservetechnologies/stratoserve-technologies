@@ -1,35 +1,62 @@
 
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 interface ServiceCardProps {
-  icon: React.ReactNode;
   title: string;
   description: string;
-  link: string;
+  techStack: { name: string; logo: string }[];
+  benefits: string[];
 }
 
-const ServiceCard = ({ icon, title, description, link }: ServiceCardProps) => {
+const ServiceCard = ({
+  title,
+  description,
+  techStack,
+  benefits,
+}: ServiceCardProps) => {
   return (
-    <Card className="border border-gray-200 shadow-sm hover:shadow-md transition-shadow overflow-hidden">
-      <CardHeader className="pb-4">
-        <div className="h-12 w-12 rounded-lg bg-brand-50 flex items-center justify-center text-brand-900 mb-4">
-          {icon}
-        </div>
-        <CardTitle className="text-xl font-bold">{title}</CardTitle>
+    <Card className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden p-4">
+      <CardHeader className="p-6 pb-4">
+        <CardTitle className="text-2xl font-semibold text-gray-800 mb-2">
+          {title}
+        </CardTitle>
       </CardHeader>
-      <CardContent>
-        <CardDescription className="text-gray-600">{description}</CardDescription>
+      <CardContent className="p-6 space-y-4">
+        {techStack.length > 0 && (
+          <div className="mb-4">
+            <h4 className="text-lg font-medium text-gray-800 mb-2">
+              Tech Stack
+            </h4>
+            <div className="flex flex-wrap gap-2">
+              {techStack.map((tech, index) => (
+                <div
+                  key={index} className="flex items-center justify-center p-2 rounded-lg"
+                >
+                  <img src={tech.logo} alt={tech.name} className="h-8 w-8" />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+           <div className="mb-4">
+           <CardDescription className="text-gray-700">
+            {description}
+          </CardDescription>
+          </div>
+        )}
+        {benefits.length > 0 && (
+          <ul className="list-disc list-inside text-gray-700">
+            {benefits.map((benefit, index) => (
+              <li key={index}>{benefit}</li>
+            ))}
+          </ul>
+        )}
       </CardContent>
-      <CardFooter>
-        <Button variant="ghost" className="p-0 hover:bg-transparent text-brand-900 hover:text-brand-800 rounded-none">
-          <Link to={link} className="flex items-center">
-            Learn More <ArrowRight className="ml-2 h-4 w-4" />
-          </Link>
-        </Button>
-      </CardFooter>
     </Card>
   );
 };

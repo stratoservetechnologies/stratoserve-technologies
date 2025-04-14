@@ -6,7 +6,7 @@ interface Testimonial {
   clientName: string;
   photoUrl: string;
   designation: string;
-  review: string;
+  review: string; 
   projectName: string;
 }
 
@@ -52,32 +52,44 @@ const Testimonials: React.FC = () => {
   return (
     <div className="bg-gray-100 min-h-screen">
       <Navbar />
-      <div className="container mx-auto px-4 py-16">
-        <h1 className="text-4xl font-bold text-center mb-8">Client Testimonials</h1>
-        <div className="overflow-x-auto">
-          <div className="flex space-x-8">
+      <div className="bg-gradient-to-r from-gray-100 via-gray-200 to-gray-300 py-16">
+        <div className="container mx-auto px-4">
+          <h1 className="text-4xl font-bold text-center text-gray-800 mb-12">
+            Client Testimonials
+          </h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"> 
             {testimonialsData.map((testimonial, index) => (
               <div
                 key={index}
-                className="bg-white p-6 rounded-lg shadow-md min-w-[300px] flex-shrink-0"
+                className="group bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl"
               >
-                <div className="flex items-center mb-4">
-                  <img
-                    src={testimonial.photoUrl}
-                    alt={testimonial.clientName}
-                    className="w-12 h-12 rounded-full mr-4"
-                  />
-                  <div>
-                    <h3 className="font-semibold">{testimonial.clientName}</h3>
-                    <p className="text-sm text-gray-600">{testimonial.designation}</p>
+                <div className="p-6">
+                  <div className="flex items-center mb-4"> 
+                    <img
+                      src={testimonial.photoUrl}
+                      alt={testimonial.clientName}
+                      className="w-16 h-16 rounded-full object-cover mr-4" 
+                    />
+                    <div>
+                      <h3 className="font-semibold text-gray-800"> 
+                        {testimonial.clientName}
+                      </h3>
+                      <p className="text-sm text-gray-600"> 
+                        {testimonial.designation}
+                      </p>
+                    </div>
                   </div>
+                  <p className="text-gray-700 mb-4 italic"> 
+                    "{testimonial.review}"
+                  </p>
+                  <p className="text-sm text-gray-500">
+                    Project: {testimonial.projectName}
+                  </p>
                 </div>
-                <p className="text-gray-700 mb-4">{testimonial.review}</p>
-                <p className="text-sm text-gray-500">Project: {testimonial.projectName}</p>
               </div>
             ))}
           </div>
-        </div>
+        </div> 
       </div>
       <Footer />
     </div>

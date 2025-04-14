@@ -6,29 +6,22 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface ProjectCardProps {
-  image: string;
+  imageUrl: string;
   title: string;
   description: string;
-  technologies: string[];
-  clientName: string;
-  clientReview: string;
   link: string;
 }
 
 const ProjectCard = ({
-  image,
+  imageUrl,
   title,
   description,
-  technologies,
-  clientName,
-  clientReview,
   link,
 }: ProjectCardProps) => {
   return (
     <Card className="overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
       <div className="aspect-video relative overflow-hidden">
-        <img
-          src={image}
+        <img src={imageUrl}
           alt={title}
           className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
         />
@@ -37,20 +30,7 @@ const ProjectCard = ({
         <CardTitle className="text-xl font-bold">{title}</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        <CardDescription className="text-gray-600">{description}</CardDescription>
-        <div className="flex flex-wrap gap-2">
-          {technologies.map((tech, index) => (
-            <Badge key={index} variant="outline" className="bg-gray-50">
-              {tech}
-            </Badge>
-          ))}
-        </div>
-        <div className="border-t border-gray-100 pt-4 mt-4">
-          <blockquote className="italic text-gray-600 text-sm">
-            "{clientReview}"
-          </blockquote>
-          <p className="text-sm font-medium text-gray-900 mt-2">— {clientName}</p>
-        </div>
+        <CardDescription className="text-gray-600">{description}</CardDescription>        
       </CardContent>
       <CardFooter>
         <Button variant="ghost" className="p-0 hover:bg-transparent text-brand-900 hover:text-brand-800 rounded-none">

@@ -1,6 +1,6 @@
 
-import ProjectCard from "@/components/ProjectCard";
 import { Button } from "@/components/ui/button";
+import ProjectCard from "@/components/ProjectCard";
 import { Link } from "react-router-dom";
 
 const ProjectsSection = () => {
@@ -41,7 +41,7 @@ const ProjectsSection = () => {
   ];
 
   return (
-    <section className="section-padding bg-gray-50" id="projects">
+    <section className="section-padding bg-gray-50" id="projects" >
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Success Stories</h2>
@@ -49,17 +49,13 @@ const ProjectsSection = () => {
             Explore our portfolio of successful projects and discover how we've helped our clients achieve their goals.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 " >
           {projects.map((project, index) => (
-            <ProjectCard
-              key={index}
-              image={project.image}
-              title={project.title}
-              description={project.description}
-              technologies={project.technologies}
-              clientName={project.clientName}
-              clientReview={project.clientReview}
-              link={project.link}
+            <ProjectCard key={index} 
+            imageUrl={project.image} 
+            title={project.title} 
+            description={project.description} 
+            link={project.link}
             />
           ))}
         </div>

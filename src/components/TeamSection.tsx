@@ -43,11 +43,13 @@ const TeamSection = () => {
   ];
 
   return (
-    <section className="section-padding bg-white" id="team">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Meet Our Team</h2>
-          <p className="text-xl text-gray-600">
+    <section className="py-16 bg-gray-100 fade-in" id="team">
+      <div className="container mx-auto px-4 md:px-6 ">
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16 ">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 transition-all duration-500 hover:text-brand-900 hover:scale-105">
+            Meet Our Team
+          </h2>
+          <p className="text-xl text-gray-600 transition-all duration-500 hover:text-brand-900 hover:scale-105">
             Our diverse team of experts is passionate about technology and committed to delivering exceptional results.
           </p>
         </div>
@@ -63,10 +65,12 @@ const TeamSection = () => {
             />
           ))}
         </div>
-        <div className="mt-12 text-center">
-          <Button className="bg-brand-900 hover:bg-brand-800 text-white">
-            <Link to="/team">View Full Team</Link>
-          </Button>
+        <div className="mt-12 text-center transition-all duration-500 hover:scale-105">
+          <Link to="/team">
+            <Button className="bg-brand-900 hover:bg-brand-800 text-white">
+              View Full Team
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

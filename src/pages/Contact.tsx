@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -15,6 +15,8 @@ import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import Navbar from '@/components/Navbar';
+import { cn } from '@/lib/utils';
+
 import Footer from '@/components/Footer';
 
 const contactFormSchema = z.object({
@@ -36,6 +38,16 @@ const contactFormSchema = z.object({
 type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 const Contact = () => {
+
+  useEffect(() => {
+    const elements = document.querySelectorAll(".fade-in");
+    elements.forEach((element) => {
+      element.classList.add("animate-fade-in-down");
+    });
+  }, []);
+
+
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
@@ -66,35 +78,35 @@ const Contact = () => {
   };
 
   return (
-    <div>
+    <div className="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen">
       <Navbar />
-      <div className="container mx-auto py-24 px-4 md:px-6">
-        <div className="max-w-2xl mx-auto">
-          <h1 className="text-4xl font-bold text-brand-900 mb-8">Contact Us</h1>
+      <div className="container mx-auto py-24 px-4 md:px-6 fade-in">
+        <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">
+          <h1 className="text-4xl font-bold text-brand-900 mb-8 transition-colors duration-300 hover:text-brand-800">Contact Us</h1>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 ">
               <FormField
                 control={form.control}
                 name="fullName"
                 render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Full Name</FormLabel>
-                    <FormControl>
-                      <Input placeholder="John Doe" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
+                    <FormItem className="transition-all duration-300 hover:shadow-md rounded-lg p-2">
+                      <FormLabel className="text-gray-800 font-medium">Full Name</FormLabel>
+                      <FormControl>
+                        <Input placeholder="John Doe" {...field} className="border-gray-300 focus:border-brand-900 focus:ring-brand-900 transition-colors duration-300" />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
                 )}
               />
               <FormField
                 control={form.control}
                 name="email"
                 render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input placeholder="johndoe@example.com" {...field} />
-                    </FormControl>
+                  <FormItem className="transition-all duration-300 hover:shadow-md rounded-lg p-2">
+                      <FormLabel className="text-gray-800 font-medium">Email</FormLabel>
+                      <FormControl>
+                        <Input placeholder="johndoe@example.com" {...field} className="border-gray-300 focus:border-brand-900 focus:ring-brand-900 transition-colors duration-300" />
+                      </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -103,11 +115,11 @@ const Contact = () => {
                 control={form.control}
                 name="phoneNumber"
                 render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Phone Number (Optional)</FormLabel>
-                    <FormControl>
-                      <Input placeholder="+1-123-456-7890" {...field} />
-                    </FormControl>
+                  <FormItem className="transition-all duration-300 hover:shadow-md rounded-lg p-2">
+                      <FormLabel className="text-gray-800 font-medium">Phone Number (Optional)</FormLabel>
+                      <FormControl>
+                        <Input placeholder="+1-123-456-7890" {...field} className="border-gray-300 focus:border-brand-900 focus:ring-brand-900 transition-colors duration-300" />
+                      </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -116,15 +128,15 @@ const Contact = () => {
                 control={form.control}
                 name="service"
                 render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Services Interested In</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                  <FormItem className="transition-all duration-300 hover:shadow-md rounded-lg p-2">
+                      <FormLabel className="text-gray-800 font-medium">Services Interested In</FormLabel>
+                    <Select onValueChange={field.onChange} defaultValue={field.value} className="border-gray-300 focus:border-brand-900 focus:ring-brand-900 transition-colors duration-300">
                       <FormControl>
-                        <SelectTrigger>
+                        <SelectTrigger className="border-gray-300 focus:border-brand-900 focus:ring-brand-900 transition-colors duration-300">
                           <SelectValue placeholder="Select a service" />
                         </SelectTrigger>
                       </FormControl>
-                      <SelectContent>
+                      <SelectContent className='border-gray-300 focus:border-brand-900 focus:ring-brand-900 transition-colors duration-300'>
                         <SelectItem value="web-development">Web Development</SelectItem>
                         <SelectItem value="app-development">App Development</SelectItem>
                         <SelectItem value="ui-ux-design">UI/UX Design</SelectItem>
@@ -139,16 +151,16 @@ const Contact = () => {
                 control={form.control}
                 name="message"
                 render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Message</FormLabel>
-                    <FormControl>
-                      <Textarea placeholder="Enter your message here." {...field} />
-                    </FormControl>
+                  <FormItem className="transition-all duration-300 hover:shadow-md rounded-lg p-2">
+                    <FormLabel className="text-gray-800 font-medium">Message</FormLabel>
+                      <FormControl >
+                        <Textarea placeholder="Enter your message here." {...field} className="border-gray-300 focus:border-brand-900 focus:ring-brand-900 transition-colors duration-300" />
+                      </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
-              <Button type="submit" disabled={isSubmitting} className="bg-brand-900 hover:bg-brand-800 text-white">
+              <Button type="submit" disabled={isSubmitting} className="bg-brand-900 hover:bg-brand-800 text-white transition-colors duration-300">
                 {isSubmitting ? 'Submitting...' : 'Send Message'}
               </Button>
             </form>

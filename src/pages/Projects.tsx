@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 import ProjectCard from '@/components/ProjectCard';
 
 const Projects = () => {
-  const projects = [
+  const projects = [{
     {
       title: 'Shlok Motors & Finance',
       description:
@@ -33,7 +33,6 @@ const Projects = () => {
       imageUrl: '/placeholder.svg',
       link: '#',
     },
-    
   ];
 
   return (
