@@ -21,14 +21,13 @@ const CTASection = () => {
                             <Link to="/contact" className="flex items-center">
                                 Get Started <ArrowRight className="ml-2 h-4 w-4" />
                             </Link>                            
-                        </Button>
-                        <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-brand-900 transition-colors duration-300 hover:shadow-lg">
-                            <Link to="/services">Explore Services</Link>
-                        </Button>
-                    </div>
+                        </Button> <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-brand-900 transition-colors duration-300 hover:shadow-lg">
+                         <Link to="/services">Explore Services</Link>
+                     </Button>
+                 </div>
                 </div>          
         </div>
-      </div>
+        </section>
     </section>
   );
 };

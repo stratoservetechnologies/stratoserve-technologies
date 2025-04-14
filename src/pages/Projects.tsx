@@ -5,7 +5,6 @@ import ProjectCard from '@/components/ProjectCard';
 
 const Projects = () => {
   const projects = [{
-    {
       title: 'Shlok Motors & Finance',
       description:
         'Web Application that showcases services, allows appointments, and inquiries. Custom CRM created to send reminders for expiring insurance and send festival greetings. Uses automated backend tools to manage client relationships.',
@@ -26,7 +25,6 @@ const Projects = () => {
       imageUrl: '/placeholder.svg',
       link: '#',
     },
-        {
       title: 'Project 4',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.',
